@@ -68,7 +68,7 @@
 
     <ULandingSection class="!pt-0">
       <NuxtImg
-        src="home-image.png"
+        src="home-image.jpg"
         alt="Raaaawwrrr Dino"
       />
     </ULandingSection>
