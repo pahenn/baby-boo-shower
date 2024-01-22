@@ -1,0 +1,55 @@
+title: Registry
+description: Choose the plan that's right for you.
+navigation.icon: i-heroicons-credit-card
+hero:
+  title: Things we're thinking we might need...
+  description: It's not that we don't think you presence is present enough, but we're thinking we might need some things to help us get started on our new life together.
+  align: center
+plans:
+  - title: Amazon
+    description: Everyone's favorite spot to shop.
+    align: top
+    button:
+      label: Get Started
+      color: primary
+  - title: Babylist
+    description: This site is basically magic. Even stuff that isn't on here, we're able to add it here.
+
+    # highlight: true
+    align: top
+    button:
+      label: Get Started
+      color: primary
+
+  - title: Target
+    description: We're not sure what we need, but we're sure we need it from Target.
+    align: top
+    button:
+      label: Get Started
+      color: primary
+
+logos:
+  title: Trusted by the world's best
+  icons:
+    - i-simple-icons-amazonaws
+    - i-simple-icons-heroku
+    - i-simple-icons-netlify
+    - i-simple-icons-vercel
+    - i-simple-icons-cloudflare
+faq:
+  title: Frequently asked questions
+  description: Culpa consectetur dolor pariatur commodo aliqua amet tempor nisi enim deserunt elit cillum.
+  items:
+    - label: Is this a secure service?
+      content: Qui sunt nostrud aliquip reprehenderit enim proident veniam magna aliquip velit occaecat eiusmod nisi deserunt sunt.
+      defaultOpen: true
+    - label: How can I cancel my subscription?
+      content: Consectetur irure Lorem nostrud adipisicing aliqua mollit Lorem sit officia magna eiusmod cupidatat.
+    - label: How does the free trial work?
+      content: Quis officia commodo magna eu qui aliquip duis.
+    - label: Can I switch plans later?
+      content: Dolore irure ullamco dolore eu occaecat magna eiusmod dolor aliqua culpa labore.
+    - label: Do you offer refunds?
+      content: Duis mollit nostrud voluptate mollit Lorem dolore commodo veniam incididunt eiusmod.
+    - label: Do you offer support?
+      content: Aliqua sit nisi consequat pariatur Lorem minim irure qui.

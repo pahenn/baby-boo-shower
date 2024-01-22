@@ -1,0 +1,140 @@
+title: Baby Boo Hennessey
+description: A Wiki for Raquel and Boo's baby shower
+navigation: false
+hero:
+  title: It's time time celebrate!
+  description: This is the one-stop-shop for all things Boo's baby shower. Here you'll find all the information you need to know about the event, as well as a registry for gifts. We'll also keep up on Boo's log (or "Blog" for short) so you can see what's going on with the little guy.
+  # headline:
+  #   label: I don't care, take me to the registry
+  #   to: https://www.babylist.com/list/descoto
+  #   icon: i-heroicons-arrow-top-right-on-square-20-solid
+  links:
+    - label: I've seen enough, let me RSVP!
+      to: "#rsvp"
+      size: xl
+      color: primary
+      icon: i-heroicons-arrow-right-20-solid
+      trailing: true
+    # - label: Ask a quest
+    #   icon: i-simple-icons-github
+    #   size: xl
+    #   color: gray
+    #   to: https://github.com/nuxt-ui-pro/saas
+    #   target: _blank
+sections:
+  - title: Where it's at
+    image: chicago-marriot-map.png
+    description: Jackie d'Escoto and Ran Fam are hosting the shower at the Chicago Marriott Naperville. We have a room block for those coming from out of town, ask for the d'Escoto Family Baby Shower room block.
+    id: features
+    align: left
+    features:
+      - name: From O'Hare
+        description: Look it up on Google Maps
+        icon: i-heroicons-paper-airplane-solid
+      - name: From Midway
+        description: Look it up on Google Maps
+        icon: i-heroicons-paper-airplane-solid
+      - name: From Aurora
+        description: Look it up on Google Maps
+        icon: i-heroicons-paper-airplane-solid
+    links:
+      - label: Explore components
+        to: /pro/components
+        color: gray
+        icon: i-heroicons-arrow-right-20-solid
+        trailing: true
+        size: md
+        class: ml-8
+  - title: Gift Registry
+    description: We are focusing on "must haves" for the baby. We live in a one bedroom apartment, so items that aren't on the registry may cause an issue with our space constaints.
+    align: right
+    features:
+      - name: Babylist
+        description:
+        icon: i-heroicons-paper-airplane-solid
+      - name: Amazon
+        description:
+        icon: i-heroicons-paper-airplane-solid
+      - name: Target
+        description:
+        icon: i-heroicons-paper-airplane-solid
+    links:
+      - label: Learn more
+        to: /pro/guide/content
+        color: gray
+        icon: i-heroicons-arrow-right-20-solid
+        trailing: true
+        size: md
+        class: ml-8
+features:
+  title: More about our little Boo
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  items:
+    - title: Easy to use
+      description: Id laborum laboris duis nostrud excepteur ut velit nulla magna Lorem proident non.
+      icon: i-heroicons-cog
+    - title: Reliable
+      description: Magna Lorem ex cillum fugiat ad enim aute irure sit duis minim.
+      icon: i-heroicons-check
+    - title: Secure
+      description: Proident nostrud excepteur sint ut culpa consectetur aute adipisicing non anim ullamco.
+      icon: i-heroicons-lock-closed
+    - title: Fast
+      description: Qui reprehenderit nostrud dolore nisi ad fugiat labore eiusmod sint aliquip nisi voluptate.
+      icon: i-heroicons-rocket-launch
+    - title: Affordable
+      description: Reprehenderit fugiat elit in do ipsum ut pariatur.
+      icon: i-heroicons-currency-dollar
+    - title: Scalable
+      description: Lorem deserunt et eiusmod. Ea in consectetur minim officia ullamco enim deserunt est.
+      icon: i-heroicons-chart-bar
+testimonials:
+  headline: Testimonials
+  title: What our customers are saying.
+  description: Proident sunt exercitation minim laborum enim laboris labore esse.
+  items:
+    - quote: Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur. In fugiat Lorem sit velit id veniam esse eiusmod non ea voluptate cupidatat reprehenderit ullamco dolore. Mollit laborum occaecat aliquip.
+      author:
+        name: Rose Roberson
+        description: CEO at Company
+        avatar:
+          src: https://i.pravatar.cc/120?img=1
+          loading: lazy
+    - quote: Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.
+      author:
+        name: Chace Rodgers
+        description: CEO at Company
+        avatar:
+          src: https://i.pravatar.cc/120?img=7
+          loading: lazy
+    - quote: Id duis velit enim officia ad nisi incididunt magna ex dolor minim deserunt dolor. Esse incididunt cillum nostrud esse do quis amet labore amet nulla eiusmod amet nulla Lorem. Incididunt ex voluptate irure officia laboris ea proident est qui.
+      author:
+        name: Cornelius Sheppard
+        description: CEO at Company
+        avatar:
+          src: https://i.pravatar.cc/120?img=3
+          loading: lazy
+    - quote: Velit consectetur in adipisicing culpa eiusmod commodo eu ex dolore. Officia irure nisi dolor dolore velit fugiat. Aliqua sint aliqua aute elit eu sunt.
+      author:
+        name: Destinee Woods
+        description: CEO at Company
+        avatar:
+          src: https://i.pravatar.cc/120?img=5
+          loading: lazy
+    - quote: Proident quis deserunt qui ex exercitation veniam id Lorem est cupidatat ipsum irure aliquip ad.
+      author:
+        name: Kaleb Mccormick
+        description: CEO at Company
+        avatar:
+          src: https://i.pravatar.cc/120?img=8
+          loading: lazy
+    - quote: Magna officia quis ea ea in officia non voluptate ipsum culpa do labore sunt. Aute est dolore commodo sint officia ad laboris dolor magna aliquip exercitation tempor commodo.
+      author:
+        name: Jazmin Mccall
+        description: CEO at Company
+        avatar:
+          src: https://i.pravatar.cc/120?img=9
+          loading: lazy
+cta:
+  title: RSVP
+  description: Please let us know if your coming so that we can plan accordingly. Thanks!
