@@ -24,3 +24,5 @@ logs
 !.env.example
 
 stash
+# Local Netlify folder
+.netlify

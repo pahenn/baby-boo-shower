@@ -1,0 +1,4 @@
+[build.environment]
+PNPM_FLAGS = "--shamefully-hoist --strict-peer-dependencies=false"
+[build]
+command = "pnpm build"

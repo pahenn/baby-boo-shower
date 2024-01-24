@@ -11,28 +11,6 @@
     additionalGuests: Guest[]
   }
 
-  // const state = ref<Rsvp>({
-  //   guest: {
-  //     name: "",
-  //     email: "",
-  //   },
-  //   additionalGuests: [],
-  // })
-
-  // const schema = z.object({
-  //   rsvp: z.object({
-  //     guest: z.object({
-  //       name: z.string(),
-  //       email: z.string().email(),
-  //     }),
-  //     additionalGuests: z.array(
-  //       z.object({
-  //         name: z.string(),
-  //         email: z.string().email(),
-  //       })
-  //     ),
-  //   }),
-  // })
   const state = ref({
     name: "",
     email: "",
@@ -61,8 +39,6 @@
     console.log(event)
     loading.value = false
   }
-
-  // const additionalGuests = ref([])
 </script>
 
 <template>

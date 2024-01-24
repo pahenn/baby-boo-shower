@@ -67,8 +67,8 @@
     </ULandingHero>
 
     <ULandingSection class="!pt-0">
-      <NuxtImg
-        src="home-image.jpg"
+      <img
+        src="~/assets/img/home-image.jpg"
         alt="Raaaawwrrr Dino"
       />
     </ULandingSection>
@@ -81,9 +81,9 @@
       :align="section.align"
       :features="section.features"
     >
-      <NuxtImg
+      <img
         v-if="section.image"
-        src="chicago-marriott-map.png"
+        src="~/assets/img/chicago-marriott-map.png"
         :alt="section.title"
       />
       <Placeholder v-else />
