@@ -15,12 +15,12 @@
     <UPage>
       <template #left>
         <UAside>
-          <template #top>
+          <!-- <template #top>
             <UDocsSearchButton
               class="rounded-md"
               size="sm"
             />
-          </template>
+          </template> -->
 
           <UNavigationTree :links="mapContentNavigation(links)" />
         </UAside>
