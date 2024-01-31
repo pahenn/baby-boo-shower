@@ -30,9 +30,7 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "light",
   },
-  // nitro: {
-  //   prerender: {
-  //     autoSubfolderIndex: false,
-  //   },
-  // },
+  runtimeConfig: {
+    GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_BASE64: "",
+  },
 })

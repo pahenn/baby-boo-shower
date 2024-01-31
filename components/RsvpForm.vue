@@ -1,33 +1,23 @@
 <script lang="ts" setup>
   import { z } from "zod"
 
-  type Guest = {
-    name: String
-    email: String
-  }
-
-  type Rsvp = {
-    guest: Guest
-    additionalGuests: Guest[]
-  }
-
   const state = ref({
     name: "",
     email: "",
-    additionalGuests: [],
+    // additionalGuests: [],
   })
 
   const schema = z.object({
     name: z.string(),
     email: z.string().email(),
-    additionalGuests: z
-      .array(
-        z.object({
-          name: z.string(),
-          email: z.string().email().optional(),
-        })
-      )
-      .optional(),
+    // additionalGuests: z
+    //   .array(
+    //     z.object({
+    //       name: z.string(),
+    //       email: z.string().email().optional(),
+    //     })
+    //   )
+    //   .optional(),
   })
 
   type Schema = z.infer<typeof schema>
@@ -35,9 +25,19 @@
   const loading = ref(false)
 
   const submit = async (event: Schema) => {
-    loading.value = true
-    console.log(event)
-    loading.value = false
+    try {
+      loading.value = true
+      console.log("Submitting...")
+      console.log("RsvpForm.vue:submit:event => ", event)
+      const { data } = await useFetch("/api/appendToSheet", {
+        method: "POST",
+        body: JSON.stringify(event.data),
+      })
+    } catch (error) {
+      console.log("RsvpForm.vue:submit:error => ", error)
+    } finally {
+      loading.value = false
+    }
   }
 </script>
 
@@ -66,7 +66,7 @@
         required
       />
     </UFormGroup>
-    <div v-if="state.additionalGuests.length > 0">
+    <!-- <div v-if="state.additionalGuests.length > 0">
       <div class="text-sm font-semibold mb-2">Additional guests</div>
       <div class="space-y-4">
         <div
@@ -100,12 +100,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="flex justify-between">
-      <UButton
+      <!-- <UButton
         label="Add guest"
         @click="state.additionalGuests.push({ name: '', email: '' })"
-      />
+      /> -->
       <UButton
         type="submit"
         label="RSVP"

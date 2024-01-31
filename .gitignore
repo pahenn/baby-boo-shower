@@ -23,6 +23,11 @@ logs
 .env.*
 !.env.example
 
+# custom
 stash
+
 # Local Netlify folder
 .netlify
+
+# credentials
+creds
