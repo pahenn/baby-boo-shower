@@ -10,6 +10,8 @@ plans:
     description: Everyone's favorite spot to shop.
     align: top
     button:
+      to: "https://www.amazon.com/baby-reg/raquel-descoto-patrick-hennessey-july-2024-chicago/3RUJRB9CXN7CF"
+      target: _blank
       label: Get Started
       color: primary
   - title: Babylist
@@ -18,6 +20,8 @@ plans:
     # highlight: true
     align: top
     button:
+      to: "https://www.babylist.com/list/descoto"
+      target: _blank
       label: Get Started
       color: primary
 
@@ -25,6 +29,8 @@ plans:
     description: We're not sure what we need, but we're sure we need it from Target.
     align: top
     button:
+      to: "https://www.target.com/gift-registry/gift/baby-boo2024"
+      target: _blank
       label: Get Started
       color: primary
 
