@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@directus/sdk':
+    specifier: ^15.0.0
+    version: 15.0.0
   '@iconify-json/heroicons':
     specifier: ^1.1.19
     version: 1.1.19
@@ -557,6 +560,11 @@ packages:
       postcss-selector-parser: ^6.0.13
     dependencies:
       postcss-selector-parser: 6.0.15
+
+  /@directus/sdk@15.0.0:
+    resolution: {integrity: sha512-QnfTQGeiZEhdWcS1K5IyoskzOzpvRt1GVjxaBjke6amP9wODa7PxLbXmpDz/1aRgml0HIkrhMDdmbWaHMgXuTQ==}
+    engines: {node: '>=18.0.0'}
+    dev: false
 
   /@egoist/tailwindcss-icons@1.7.2(tailwindcss@3.4.1):
     resolution: {integrity: sha512-fDYqnkTJOwZGDlHsN3aKqXy8AtiapDzflZoFB6bAZCd67YK6sDTFceoC89HZbvcnbILpp6SO7q1bQ8i8R3PWaw==}
