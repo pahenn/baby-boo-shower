@@ -31,16 +31,23 @@
     title: page.value.title,
     description: page.value.description,
   })
+
+  // const { $directus, $readItems } = useNuxtApp()
+
+  // const { data: posts } = await useFetch(
+  //   "https://cms.babyboo2024.com/items/Blog"
+  // )
+
+  // console.log(posts.value)
 </script>
 
 <template>
   <UContainer>
-    <UPageHeader
+    <!-- <UPageHeader
       v-bind="page"
       class="py-[50px]"
-    />
-
-    <UPageBody>
+    /> -->
+    <!-- <UPageBody>
       <UBlogList>
         <UBlogPost
           v-for="(post, index) in posts"
@@ -65,6 +72,6 @@
           }"
         />
       </UBlogList>
-    </UPageBody>
+    </UPageBody> -->
   </UContainer>
 </template>
