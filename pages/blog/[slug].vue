@@ -4,9 +4,11 @@
 
   const route = useRoute()
 
-  const { data: post } = await useAsyncData(route.path, () =>
-    queryContent<BlogPost>(route.path).findOne()
-  )
+  const { $directus, $readItem } = useNuxtApp()
+
+  const { data: post } = await useAsyncData(route.path, () => {
+    return $directus.request($readItem("posts", route.params.slug))
+  })
   if (!post.value) {
     throw createError({
       statusCode: 404,
@@ -15,42 +17,42 @@
     })
   }
 
-  const { data: surround } = await useAsyncData(
-    `${route.path}-surround`,
-    () =>
-      queryContent("/blog")
-        .where({ _extension: "md" })
-        .without(["body", "excerpt"])
-        .sort({ date: -1 })
-        .findSurround(withoutTrailingSlash(route.path)),
-    { default: () => [] }
-  )
+  // const { data: surround } = await useAsyncData(
+  //   `${route.path}-surround`,
+  //   () =>
+  //     queryContent("/blog")
+  //       .where({ _extension: "md" })
+  //       .without(["body", "excerpt"])
+  //       .sort({ date: -1 })
+  //       .findSurround(withoutTrailingSlash(route.path)),
+  //   { default: () => [] }
+  // )
 
   const title = post.value.head?.title || post.value.title
   const description = post.value.head?.description || post.value.description
 
-  useSeoMeta({
-    title,
-    ogTitle: title,
-    description,
-    ogDescription: description,
-  })
+  // useSeoMeta({
+  //   title,
+  //   ogTitle: title,
+  //   description,
+  //   ogDescription: description,
+  // })
 
-  if (post.value.image?.src) {
-    const site = useSiteConfig()
+  // if (post.value.image?.src) {
+  //   const site = useSiteConfig()
 
-    useSeoMeta({
-      ogImage: joinURL(site.url, post.value.image.src),
-      twitterImage: joinURL(site.url, post.value.image.src),
-    })
-  } else {
-    defineOgImage({
-      component: "Baby Boo",
-      title,
-      description,
-      headline: "Blog",
-    })
-  }
+  //   useSeoMeta({
+  //     ogImage: joinURL(site.url, post.value.image.src),
+  //     twitterImage: joinURL(site.url, post.value.image.src),
+  //   })
+  // } else {
+  //   defineOgImage({
+  //     component: "Baby Boo",
+  //     title,
+  //     description,
+  //     headline: "Blog",
+  //   })
+  // }
 </script>
 
 <template>
@@ -96,14 +98,14 @@
 
     <UPage>
       <UPageBody prose>
-        <ContentRenderer
-          v-if="post && post.body"
-          :value="post"
-        />
+        <div
+          v-if="post.body"
+          v-html="$mdRenderer.render(post.body)"
+        ></div>
 
-        <hr v-if="surround?.length" />
+        <!-- <hr v-if="surround?.length" /> -->
 
-        <UDocsSurround :surround="surround" />
+        <!-- <UDocsSurround :surround="surround" /> -->
       </UPageBody>
 
       <template #right>
