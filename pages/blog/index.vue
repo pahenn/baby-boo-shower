@@ -1,48 +1,49 @@
 <script setup lang="ts">
-  import type { BlogPost } from "~/types"
+  // useSeoMeta({
+  //   title: page.value.title,
+  //   ogTitle: page.value.title,
+  //   description: page.value.description,
+  //   ogDescription: page.value.description,
+  // })
 
-  const { data: page } = await useAsyncData("blog", () =>
-    queryContent("/blog").findOne()
-  )
-  if (!page.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "Page not found",
-      fatal: true,
-    })
-  }
+  // defineOgImage({
+  //   component: "Baby Boo",
+  //   title: page.value.title,
+  //   description: page.value.description,
+  // })
 
-  const { data: posts } = await useAsyncData("posts", () =>
-    queryContent<BlogPost>("/blog")
-      .where({ _extension: "md" })
-      .sort({ date: -1 })
-      .find()
-  )
+  const { $directus, $readItems } = useNuxtApp()
 
-  useSeoMeta({
-    title: page.value.title,
-    ogTitle: page.value.title,
-    description: page.value.description,
-    ogDescription: page.value.description,
+  const { data: posts } = await useAsyncData("posts", () => {
+    return $directus.request(
+      $readItems("posts", {
+        fields: ["*", { "*": ["*"] }],
+      })
+    )
   })
-
-  defineOgImage({
-    component: "Baby Boo",
-    title: page.value.title,
-    description: page.value.description,
-  })
-
-  // const { $directus, $readItems } = useNuxtApp()
-
-  // const { data: posts } = await useFetch(
-  //   "https://cms.babyboo2024.com/items/Blog"
-  // )
-
-  // console.log(posts.value)
 </script>
 
 <template>
   <UContainer>
+    <UPageBody>
+      <UBlogList>
+        <UBlogPost
+          v-for="(post, index) in posts"
+          :key="index"
+          :to="`/blog/${post.id}`"
+          :title="post.title"
+          :description="post.description"
+          :image="{
+            src: `${$directus.url}assets/${post.image.filename_disk}?width=640`,
+          }"
+          :orientation="index === 0 ? 'horizontal' : 'vertical'"
+          :class="[index === 0 && 'col-span-full']"
+          :ui="{
+            description: 'line-clamp-2',
+          }"
+        />
+      </UBlogList>
+    </UPageBody>
     <!-- <UPageHeader
       v-bind="page"
       class="py-[50px]"
