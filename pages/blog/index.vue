@@ -34,7 +34,7 @@
           :title="post.title"
           :description="post.description"
           :image="{
-            src: `${$directus.url}assets/${post.image.filename_disk}?width=640`,
+            src: `${$directus.url}assets/${post.image.filename_disk}?key=blog-index`,
           }"
           :orientation="index === 0 ? 'horizontal' : 'vertical'"
           :class="[index === 0 && 'col-span-full']"

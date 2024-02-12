@@ -17,18 +17,6 @@
     description: page.value.description,
     ogDescription: page.value.description,
   })
-
-  defineOgImage({
-    component: "Baby Boo",
-    title: page.value.title,
-    description: page.value.description,
-  })
-
-  useHead({
-    script: [
-      { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" },
-    ],
-  })
 </script>
 
 <template>

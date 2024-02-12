@@ -1,8 +1,8 @@
 import { createDirectus, rest, readItem, readItems } from "@directus/sdk"
 
-const directus = createDirectus("https://cms.babyboo2024.com").with(rest())
-
 export default defineNuxtPlugin(() => {
+  const directusUrl = useRuntimeConfig().public.directusUrl
+  const directus = createDirectus(directusUrl).with(rest())
   return {
     provide: { directus, readItem, readItems },
   }

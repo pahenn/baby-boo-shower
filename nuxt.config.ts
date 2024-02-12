@@ -32,5 +32,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_BASE64: "",
+    public: {
+      directusUrl: "",
+    },
   },
 })
