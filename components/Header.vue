@@ -5,6 +5,10 @@
 
   const links = [
     {
+      label: "Home",
+      to: "/",
+    },
+    {
       label: "Our Story",
       to: "/our-story/about-us",
     },
@@ -28,7 +32,7 @@
     <template #logo>
       Baby Boo
       <UBadge
-        label="Coming July 2024"
+        label="Coming June 2024"
         variant="subtle"
         class="mb-0.5"
       />
