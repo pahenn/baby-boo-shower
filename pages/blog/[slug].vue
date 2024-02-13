@@ -3,15 +3,26 @@
 
   const route = useRoute()
 
-  const { $directus, $readItem } = useNuxtApp()
+  const { $directus, $readItems } = useNuxtApp()
 
-  const { data: post } = await useAsyncData(route.path, () => {
-    return $directus.request(
-      $readItem("posts", route.params.slug, {
-        // fields: ["*", { "*": ["*"] }],
-      })
-    )
-  })
+  const { data: post } = await useAsyncData(
+    "posts",
+    () => {
+      return $directus.request(
+        $readItems("posts", {
+          filter: {
+            slug: {
+              _eq: route.params.slug,
+            },
+          },
+        })
+      )
+    },
+    {
+      transform: (data) => data[0],
+    }
+  )
+
   if (!post.value) {
     throw createError({
       statusCode: 404,
@@ -58,7 +69,6 @@
       headline: "Blog",
     })
   }
-  console.log(post.value)
 </script>
 
 <template>
@@ -67,26 +77,28 @@
       :title="post.title"
       :description="post.description"
       align="center"
+      class="py-8 sm:py-8 md:py-8 lg:py-8 xl:py-8"
     >
-      <!-- <NuxtImg
-        :src="`${$directus.url}assets/${post.image}`"
-        :alt="post.title"
-      /> -->
       <NuxtImg
         provider="directus"
         :src="post.image"
+        :modifiers="{ key: 'scaled' }"
       />
     </UPageHero>
 
     <UPage>
       <UPageHeader>
         <template #headline>
-          <UBadge
+          <div
+            class="flex gap-1"
             v-for="tag in post.tags"
-            :key="tag"
-            :label="tag"
-            variant="subtle"
-          />
+          >
+            <UBadge
+              :key="tag"
+              :label="tag"
+              variant="subtle"
+            />
+          </div>
           <span class="text-gray-500 dark:text-gray-400">&middot;</span>
           <time class="text-gray-500 dark:text-gray-400">{{
             new Date(post.date_published).toLocaleDateString("en", {
@@ -121,19 +133,13 @@
         <div
           v-if="post.body"
           v-html="$mdRenderer.render(post.body)"
-        ></div>
+          class="flex flex-col w-full"
+        />
 
         <!-- <hr v-if="surround?.length" /> -->
 
         <!-- <UDocsSurround :surround="surround" /> -->
       </UPageBody>
-
-      <template #right>
-        <UDocsToc
-          v-if="post.body && post.body.toc"
-          :links="post.body.toc.links"
-        />
-      </template>
     </UPage>
   </UContainer>
 </template>
