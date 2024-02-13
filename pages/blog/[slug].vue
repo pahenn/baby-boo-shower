@@ -1,9 +1,28 @@
 <script setup lang="ts">
   import { withoutTrailingSlash, joinURL } from "ufo"
+  const { $directus, $readItems, $preview } = useNuxtApp()
 
   const route = useRoute()
 
-  const { $directus, $readItems } = useNuxtApp()
+  if ($preview) {
+    const { data: post } = await useAsyncData(
+      "posts",
+      () => {
+        return $directus.request(
+          $readItems("posts", {
+            filter: {
+              slug: {
+                _eq: route.params.slug,
+              },
+            },
+          })
+        )
+      },
+      {
+        transform: (data) => data[0],
+      }
+    )
+  }
 
   const { data: post } = await useAsyncData(
     "posts",

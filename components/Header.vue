@@ -1,12 +1,8 @@
 <script setup lang="ts">
   const links = [
     {
-      label: "Home",
+      label: "Baby Shower",
       to: "/",
-    },
-    {
-      label: "Our Story",
-      to: "/our-story/about-us",
     },
     {
       label: "Registry",
@@ -15,6 +11,10 @@
     {
       label: "Diaper Raffle",
       to: "/diaper",
+    },
+    {
+      label: "Our Story",
+      to: "/our-story/about-us",
     },
     {
       label: "Boo's Log",
