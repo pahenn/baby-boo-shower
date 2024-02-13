@@ -13,6 +13,11 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxtjs/tailwindcss",
   ],
+  image: {
+    directus: {
+      baseURL: process.env.NUXT_PUBLIC_DIRECTUS_URL + "/assets",
+    },
+  },
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     "components:extend": (components) => {
@@ -23,10 +28,10 @@ export default defineNuxtConfig({
       globals.forEach((c) => (c.global = true))
     },
   },
-  routeRules: {
-    "/api/search.json": { prerender: true },
-    "/docs": { redirect: "/docs/getting-started", prerender: false },
-  },
+  // routeRules: {
+  //   "/api/search.json": { prerender: true },
+  //   "/docs": { redirect: "/docs/getting-started", prerender: false },
+  // },
   colorMode: {
     preference: "light",
   },

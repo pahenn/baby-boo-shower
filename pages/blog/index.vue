@@ -17,10 +17,15 @@
   const { data: posts } = await useAsyncData("posts", () => {
     return $directus.request(
       $readItems("posts", {
-        fields: ["*", { "*": ["*"] }],
+        // fields: ["*", { "*": ["*"] }],
       })
     )
   })
+
+  console.log(posts.value)
+  // :image="{
+  //           src: `${$directus.url}assets/${post.image}`,
+  //         }"
 </script>
 
 <template>
@@ -33,15 +38,19 @@
           :to="`/blog/${post.id}`"
           :title="post.title"
           :description="post.description"
-          :image="{
-            src: `${$directus.url}assets/${post.image.filename_disk}?key=blog-index`,
-          }"
           :orientation="index === 0 ? 'horizontal' : 'vertical'"
           :class="[index === 0 && 'col-span-full']"
           :ui="{
             description: 'line-clamp-2',
           }"
-        />
+        >
+          <template #image>
+            <NuxtImg
+              provider="directus"
+              :src="post.image"
+            />
+          </template>
+        </UBlogPost>
       </UBlogList>
     </UPageBody>
     <!-- <UPageHeader

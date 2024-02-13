@@ -8,7 +8,7 @@
   const { data: post } = await useAsyncData(route.path, () => {
     return $directus.request(
       $readItem("posts", route.params.slug, {
-        fields: ["*", { "*": ["*"] }],
+        // fields: ["*", { "*": ["*"] }],
       })
     )
   })
@@ -58,17 +58,28 @@
       headline: "Blog",
     })
   }
+  console.log(post.value)
 </script>
 
 <template>
   <UContainer v-if="post">
-    <div>
-      <NuxtImg :src="`${$directus.url}assets/${post.image.filename_disk}`" />
+    <UPageHero
+      :title="post.title"
+      :description="post.description"
+      align="center"
+    >
+      <!-- <NuxtImg
+        :src="`${$directus.url}assets/${post.image}`"
+        :alt="post.title"
+      /> -->
+      <NuxtImg
+        provider="directus"
+        :src="post.image"
+      />
+    </UPageHero>
 
-      <UPageHeader
-        :title="post.title"
-        :description="post.description"
-      >
+    <UPage>
+      <UPageHeader>
         <template #headline>
           <UBadge
             v-for="tag in post.tags"
@@ -105,9 +116,7 @@
         </UButton>
       </div> -->
       </UPageHeader>
-    </div>
 
-    <UPage>
       <UPageBody prose>
         <div
           v-if="post.body"
