@@ -17,12 +17,6 @@
     ogDescription: page.value.description,
   })
 
-  defineOgImage({
-    component: "Baby Boo",
-    title: page.value.title,
-    description: page.value.description,
-  })
-
   const isYearly = ref(false)
 </script>
 

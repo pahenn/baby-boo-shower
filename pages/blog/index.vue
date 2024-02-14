@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  const { $directus, $readItems } = useNuxtApp()
+
   const title = "Boo's Log"
   const description = "A Blog about our journey with Boo."
 
@@ -8,14 +10,6 @@
     description,
     ogDescription: description,
   })
-
-  defineOgImage({
-    component: "Baby Boo",
-    title,
-    description,
-  })
-
-  const { $directus, $readItems } = useNuxtApp()
 
   const { data: posts } = await useAsyncData("posts", () => {
     return $directus.request(
@@ -50,12 +44,6 @@
           :ui="{
             description: 'line-clamp-2',
           }"
-          :image="{
-            provider: 'directus',
-            src: post.image,
-            alt: post.title,
-            modifiers: { key: 'scaled' },
-          }"
           :date="
             new Date(post.date_published).toLocaleDateString('en', {
               year: 'numeric',
@@ -66,6 +54,14 @@
           :badge="{ label: post.tags[0] }"
           prefetch
         >
+          <template #image>
+            <NuxtImg
+              provider="directus"
+              :src="post.image"
+              :alt="post.title"
+              :modifiers="{ key: 'scaled' }"
+            />
+          </template>
           <template #badge>
             <div class="flex gap-2">
               <div
@@ -82,31 +78,5 @@
         </UBlogPost>
       </UBlogList>
     </UPageBody>
-    <!-- <UPageBody>
-      <UBlogList>
-        <UBlogPost
-          v-for="(post, index) in posts"
-          :key="index"
-          :to="post._path"
-          :title="post.title"
-          :description="post.description"
-          :image="post.image"
-          :date="
-            new Date(post.date).toLocaleDateString('en', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            })
-          "
-          :authors="post.authors"
-          :badge="post.badge"
-          :orientation="index === 0 ? 'horizontal' : 'vertical'"
-          :class="[index === 0 && 'col-span-full']"
-          :ui="{
-            description: 'line-clamp-2',
-          }"
-        />
-      </UBlogList>
-    </UPageBody> -->
   </UContainer>
 </template>

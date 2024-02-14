@@ -32,12 +32,6 @@
     ogDescription: page.value.description,
   })
 
-  defineOgImage({
-    component: "Baby Boo",
-    title: page.value.title,
-    description: page.value.description,
-  })
-
   const headline = computed(() => findPageHeadline(page.value!))
 </script>
 

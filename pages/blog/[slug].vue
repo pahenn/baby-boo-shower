@@ -50,8 +50,6 @@
     })
   }
 
-  console.log(post.value)
-
   // const { data: surround } = await useAsyncData(
   //   `${route.path}-surround`,
   //   () =>
@@ -72,22 +70,6 @@
     description,
     ogDescription: description,
   })
-
-  if (post.value.image?.src) {
-    const site = useSiteConfig()
-
-    useSeoMeta({
-      ogImage: joinURL(site.url, post.value.image.src),
-      twitterImage: joinURL(site.url, post.value.image.src),
-    })
-  } else {
-    defineOgImage({
-      component: "Baby Boo",
-      title,
-      description,
-      headline: "Blog",
-    })
-  }
 </script>
 
 <template>
