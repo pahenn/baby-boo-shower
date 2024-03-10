@@ -1,5 +1,8 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div></div>
+  <UContainer>
+    <UPageHeader title="Diaper Raffle!" />
+    <UPage> hello </UPage>
+  </UContainer>
 </template>

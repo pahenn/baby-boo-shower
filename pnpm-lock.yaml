@@ -8,6 +8,9 @@ dependencies:
   '@directus/sdk':
     specifier: ^15.0.0
     version: 15.0.0
+  '@formkit/tempo':
+    specifier: ^0.0.15
+    version: 0.0.15
   '@iconify-json/heroicons':
     specifier: ^1.1.19
     version: 1.1.19
@@ -1053,6 +1056,10 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+    dev: false
+
+  /@formkit/tempo@0.0.15:
+    resolution: {integrity: sha512-jDz5yrCAG2gPoalgoqKUtJWOgdLGCtHgBYLZBRUjAUpvX5DMBAJz2QqyfTdLhXCfhfOrugl2FQtSaBxIPcKcyw==}
     dev: false
 
   /@fortawesome/fontawesome-common-types@6.5.1:

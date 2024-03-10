@@ -1,37 +1,85 @@
 <script lang="ts" setup>
   import { z } from "zod"
+  import { format } from "@formkit/tempo"
+
+  const answers = ["Yes", "No"]
 
   const state = ref({
     name: "",
     email: "",
-    // additionalGuests: [],
+    response: ref(""),
+    additionalGuests: [],
   })
 
   const schema = z.object({
     name: z.string(),
     email: z.string().email(),
-    // additionalGuests: z
-    //   .array(
-    //     z.object({
-    //       name: z.string(),
-    //       email: z.string().email().optional(),
-    //     })
-    //   )
-    //   .optional(),
+    response: z.string(),
+    additionalGuests: z
+      .array(
+        z.object({
+          name: z.string(),
+          email: z.string().email().optional(),
+        })
+      )
+      .optional(),
   })
 
   type Schema = z.infer<typeof schema>
 
   const loading = ref(false)
+  const submitted = ref(false)
+
+  const flatten_rsvp = (rsvp: Schema) => {
+    const date = format({
+      date: new Date(),
+      format: "MMMM D, YYYY h:mm a",
+      tz: "America/New_York",
+    })
+    const rsvps = []
+    const { name: rsvp_name, email: rsvp_email, response } = rsvp
+    rsvps.push({
+      rsvp: response,
+      name: rsvp_name,
+      email: rsvp_email,
+      rsvp_name,
+      rsvp_email,
+      date: date,
+    })
+    const { additionalGuests } = rsvp
+    if (!additionalGuests) return rsvps
+
+    const guests = additionalGuests.map((guest) => {
+      const { name, email } = guest
+      return {
+        rsvp: response,
+        name,
+        email,
+        rsvp_name,
+        rsvp_email,
+        date: date,
+      }
+    })
+    return rsvps.concat(guests)
+  }
 
   const submit = async (event: Schema) => {
     try {
       loading.value = true
       console.log("Submitting...")
-      console.log("RsvpForm.vue:submit:event => ", event)
-      const { data } = await useFetch("/api/appendToSheet", {
-        method: "POST",
-        body: JSON.stringify(event.data),
+      for (const rsvp of flatten_rsvp(event.data)) {
+        // console.log("RsvpForm.vue:submit:rsvp => ", rsvp)
+        const { data } = await useFetch("/api/appendToSheet", {
+          method: "POST",
+          body: JSON.stringify(rsvp),
+        })
+      }
+      submitted.value = true
+      state.value = ref({
+        name: "",
+        email: "",
+        response: ref(""),
+        additionalGuests: [],
       })
     } catch (error) {
       console.log("RsvpForm.vue:submit:error => ", error)
@@ -42,7 +90,13 @@
 </script>
 
 <template>
+  <div v-if="submitted">
+    <div class="text-2xl font-semibold text-center">
+      Thank you for your RSVP!
+    </div>
+  </div>
   <UForm
+    v-else
     :state
     :schema
     @submit="submit"
@@ -66,7 +120,17 @@
         required
       />
     </UFormGroup>
-    <!-- <div v-if="state.additionalGuests.length > 0">
+    <UFormGroup
+      name="answer"
+      label="RSVP"
+    >
+      <UInputMenu
+        v-model="state.response"
+        :options="answers"
+        required
+      />
+    </UFormGroup>
+    <div v-if="state.additionalGuests.length > 0">
       <div class="text-sm font-semibold mb-2">Additional guests</div>
       <div class="space-y-4">
         <div
@@ -100,17 +164,20 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="flex justify-between">
-      <!-- <UButton
+      <UButton
         label="Add guest"
         @click="state.additionalGuests.push({ name: '', email: '' })"
-      /> -->
-      <UButton
-        type="submit"
-        label="RSVP"
-        :loading
       />
+      <div class="flex gap-4">
+        <UButton
+          type="submit"
+          label="RSVP"
+          variant="outline"
+          :loading
+        />
+      </div>
     </div>
   </UForm>
 </template>
