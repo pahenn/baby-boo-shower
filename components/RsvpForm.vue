@@ -33,7 +33,7 @@
   const flatten_rsvp = (rsvp: Schema) => {
     const date = format({
       date: new Date(),
-      format: "MMMM D, YYYY h:mm a",
+      format: "MMMM D",
       tz: "America/New_York",
     })
     const rsvps = []
