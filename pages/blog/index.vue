@@ -14,7 +14,6 @@
   const { data: posts } = await useAsyncData("posts", () => {
     return $directus.request(
       $readItems("posts", {
-        // fields: ["*", { "*": ["*"] }],
         sort: "-date_published",
         filter: {
           status: "published",

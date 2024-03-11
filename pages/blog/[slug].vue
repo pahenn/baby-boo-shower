@@ -50,17 +50,6 @@
     })
   }
 
-  // const { data: surround } = await useAsyncData(
-  //   `${route.path}-surround`,
-  //   () =>
-  //     queryContent("/blog")
-  //       .where({ _extension: "md" })
-  //       .without(["body", "excerpt"])
-  //       .sort({ date: -1 })
-  //       .findSurround(withoutTrailingSlash(route.path)),
-  //   { default: () => [] }
-  // )
-
   const title = post.value.head?.title || post.value.title
   const description = post.value.head?.description || post.value.description
 
@@ -109,25 +98,6 @@
             })
           }}</time>
         </template>
-
-        <!-- <div class="flex flex-wrap items-center gap-3 mt-4">
-        <UButton
-          v-for="(author, index) in post.authors"
-          :key="index"
-          :to="author.to"
-          color="white"
-          target="_blank"
-          size="sm"
-        >
-          <UAvatar
-            v-bind="author.avatar"
-            :alt="author.name"
-            size="2xs"
-          />
-
-          {{ author.name }}
-        </UButton>
-      </div> -->
       </UPageHeader>
 
       <UPageBody prose>
@@ -136,10 +106,6 @@
           v-html="$mdRenderer.render(post.body)"
           class="flex flex-col w-full"
         />
-
-        <!-- <hr v-if="surround?.length" /> -->
-
-        <!-- <UDocsSurround :surround="surround" /> -->
       </UPageBody>
     </UPage>
   </UContainer>
