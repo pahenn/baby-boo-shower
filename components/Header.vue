@@ -10,7 +10,7 @@
     },
     {
       label: "Diaper Raffle",
-      to: "/diaper",
+      to: "/diaper-raffle",
     },
     {
       label: "Our Story",
