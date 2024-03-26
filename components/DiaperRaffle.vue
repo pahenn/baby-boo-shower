@@ -20,7 +20,8 @@
         <div class="md:text-2xl text-black text-center font-medium">
           <p>Bring a pack</p>
           <p>of any size</p>
-          <p>For youre chance</p>
+          <br />
+          <p>For your chance</p>
           <p>to win a prize!</p>
         </div>
       </div>
